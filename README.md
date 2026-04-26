@@ -14,3 +14,10 @@ Verifies that the application does not allow login when submitting the form with
 Test credentials are stored using Cypress environment variables,
 the password input is hidden from logs using `{ log: false }` for security.
 Small waits were added to make the test execution easier to follow during demonstration.
+Credentials are included in the Cypress configuration to allow easy test execution.
+How to run:
+Install dependencies:
+npm install
+
+Run tests:
+npx cypress open
