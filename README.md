@@ -1,24 +1,26 @@
-This project contains automated end-to-end tests for the Mindomo web application using Cypress.
-I chose to test the Authentication (Login) functionality.
+In this project I created some end-to-end tests for the Mindomo web application using Cypress.
+I chose to test the login functionality because it is a core part of the application, and then I extended the tests a bit to cover another feature (AI Mind Maps).
 
-Test: 
+Test:
 1. Successful Login  
-Verifies that a user can log in with valid credentials and access the dashboard.
+Checks that a user can log in with valid credentials.
 
 2. Invalid Login  
-Verifies that the application displays an error message when incorrect credentials are used.
+Checks that an error message is displayed when wrong credentials are used.
 
 3. Empty Fields Login  
-Verifies that the application does not allow login when submitting the form without entering any data.
+Checks that the user cannot log in without entering any data.
 
-Test credentials are stored using Cypress environment variables,
-the password input is hidden from logs using `{ log: false }` for security.
-Small waits were added to make the test execution easier to follow during demonstration.
-Credentials are included in the Cypress configuration to allow easy test execution.
+4. Forgot Password  
+Checks that the "Forgot password" page can be accessed from the login screen.
+
+5. AI Mind Maps  
+Checks that the user can access the AI Mind Maps section and type text in the input field.
+
+The test credentials are stored using Cypress environment variables.  
+The password is hidden from the logs using `{ log: false }`.  
+I added small waits to make the tests easier to follow during execution.
 
 How to run:
-Install dependencies:
-npm install
-
-Run tests:
+npm install  
 npx cypress open
