@@ -1,4 +1,4 @@
-describe('Mindomo Authentication Tests', () => {
+describe('Mindomo Cypress Tests', () => {
 
  it('should login and open the create templates page', () => {
   cy.visit('https://www.mindomo.com/login')
@@ -6,17 +6,14 @@ describe('Mindomo Authentication Tests', () => {
 
   cy.get('[placeholder="Username / E-mail"]').type(Cypress.env('email'))
   cy.wait(1000)
-
   cy.get('[placeholder="Password"]').type(Cypress.env('password'), { log: false })
   cy.wait(1000)
-
   cy.contains('button', 'Log in').click()
-  cy.wait(3000)
-
+  cy.wait(2000)
   cy.url().should('include', '/dashboard')
 
   cy.contains('Create').click({ force: true })
-  cy.wait(3000)
+  cy.wait(2000)
 
   cy.contains('Blank mind map').should('be.visible')
   cy.contains('Blank concept map').should('be.visible')
@@ -53,7 +50,36 @@ describe('Mindomo Authentication Tests', () => {
     cy.get('body').should('contain.text', 'Invalid login, please try again.')
     cy.wait(2000)
   })
+it('should open the forgot password page', () => {
+  cy.visit('https://www.mindomo.com/login')
+  cy.wait(1500)
+  cy.contains('Forgot password?').click()
+  cy.wait(2000)
+  cy.url().should('include', 'forgot')
+  cy.get('body').should('contain.text', 'Forgot')
+})
+it('should allow user to input text in AI Mind Maps', () => {
+  cy.visit('https://www.mindomo.com/login')
+  cy.wait(1500)
 
+  cy.get('[placeholder="Username / E-mail"]').type(Cypress.env('email'))
+  cy.wait(1000)
 
- 
+  cy.get('[placeholder="Password"]').type(Cypress.env('password'), { log: false })
+  cy.wait(1000)
+  cy.contains('button', 'Log in').click()
+  cy.wait(2000)
+  cy.url().should('include', '/dashboard')
+  cy.contains('Create').click({ force: true })
+  cy.wait(2000)
+  cy.contains('AI Mind Maps').click({ force: true })
+  cy.wait(2000)
+  cy.get('textarea').type('Project')
+
+  cy.get('textarea')
+    .should('be.visible')
+    .and('have.value', 'Project')
+
+  
+})
 })
