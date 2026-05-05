@@ -15,7 +15,7 @@ Checks that the user cannot log in without entering any data.
 Checks that the "Forgot password" page can be accessed from the login screen.
 
 5. AI Mind Maps  
-Checks that the user can access the AI Mind Maps section and type text in the input field.
+Checks that the user can access the AI Mind Maps section.
 
 The test credentials are stored using Cypress environment variables.  
 The password is hidden from the logs using `{ log: false }`.  
